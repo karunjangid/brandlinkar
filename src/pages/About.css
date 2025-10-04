@@ -1,0 +1,35 @@
+.about-section {
+  padding: 4rem 2rem;
+  background: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+  color: #2c3e50;
+  min-height: 80vh;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-container h2 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #3498db;
+}
+
+.about-container p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-container h2 {
+    font-size: 2rem;
+  }
+
+  .about-container p {
+    font-size: 1rem;
+  }
+}
