@@ -30,9 +30,9 @@ const Contact = () => {
         <div className="contact-content">
           <div className="contact-info">
             <h3>Get In Touch</h3>
-            <p><strong>Email:</strong> info@brandlinkar.com</p>
-            <p><strong>Phone:</strong> +1 (555) 123-4567</p>
-            <p><strong>Address:</strong> 123 Innovation Street, Tech City, TC 12345</p>
+            <p><strong>Email:</strong> updated soon</p>
+            <p><strong>Phone:</strong> updated soon</p>
+            <p><strong>Address:</strong> updated soon</p>
           </div>
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
