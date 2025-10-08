@@ -30,13 +30,13 @@ const Footer = () => {
           </div>
           <div className="footer-section">
             <h4>Contact Info</h4>
-            <p>Location: New York, NY</p>
-            <p>Email: contact@brandlinkar.com</p>
-            <p>Phone: +1 (123) 456-7890</p>
+            <p>Malviya Nagar, Jaipur, Rajasthan, India 302017</p>
+            <p>Email: jangidkind@gmail.com</p>
+            <p>Phone: +918619448841</p>
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2024 BrandLinkar. All rights reserved.</p>
+          <p>karun kumar jangid non&copy; 2024 BrandLinkar. All rights reserved.</p>
         </div>
       </div>
     </footer>

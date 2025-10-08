@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './Home.css';
+import RegistrationSelection from '../components/RegistrationSelection';
 import AboutUs from "../assets/aboutus.png";
 import beautyglow from "../assets/beautyglow.png";
 import fashionhub from "../assets/fashionhub.png";
@@ -7,10 +8,9 @@ import techcorp from "../assets/techcorp.png";
 import travekworld from "../assets/travekworld.png";
 import foodiedelight from "../assets/foodiedelight.png";
 import healthplus from "../assets/healthplus.png";
+import Teammm from "../assets/Team.png";
 
-
-
-const Home = () => {
+const Home = ({ showRegistrationModal, setShowRegistrationModal }) => {
   const statsRef = useRef(null);
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const Home = () => {
         <div className="home-content">
           <h1>Welcome to BrandLinkar</h1>
           <p>Connecting Brands & Influencers for Mutual Growth</p>
-          <button className="home-button">Register Now</button>
+          <button className="home-button" onClick={() => setShowRegistrationModal(true)}>Register Now</button>
         </div>
       </main>
 
@@ -181,22 +181,10 @@ const Home = () => {
           <p>Meet the passionate professionals behind BrandLinkar.</p>
           <div className="team-grid">
             <div className="team-member">
-              <img src="https://via.placeholder.com/150" alt="John Doe" className="member-image" />
-              <h3>John Doe</h3>
+              <img src={Teammm} alt="Karun Kumar Jangid" className="member-image" />
+              <h3>Karun Kumar Jangid</h3>
               <p className="member-role">CEO & Founder</p>
               <p className="member-bio">Experienced entrepreneur with a passion for connecting brands and influencers.</p>
-            </div>
-            <div className="team-member">
-              <img src="https://via.placeholder.com/150" alt="Jane Smith" className="member-image" />
-              <h3>Jane Smith</h3>
-              <p className="member-role">Head of Partnerships</p>
-              <p className="member-bio">Expert in building strategic partnerships and driving collaborative growth.</p>
-            </div>
-            <div className="team-member">
-              <img src="https://via.placeholder.com/150" alt="Mike Johnson" className="member-image" />
-              <h3>Mike Johnson</h3>
-              <p className="member-role">Lead Developer</p>
-              <p className="member-bio">Full-stack developer focused on creating innovative solutions for the platform.</p>
             </div>
           </div>
         </div>
@@ -242,7 +230,7 @@ const Home = () => {
                 <p>"BrandLinkar helped me connect with amazing brands that aligned with my values. My engagement rates skyrocketed, and I've never felt more authentic in my partnerships."</p>
               </div>
               <div className="testimonial-author">
-                <img src="https://via.placeholder.com/60" alt="Sarah Johnson" />
+                <img src="https://sayjglobalpartners.com/wp-content/uploads/2022/12/Depositphotos_24349949_l-2015.jpg" alt="Sarah Johnson" />
                 <div>
                   <h4>Sarah Johnson</h4>
                   <p>Lifestyle Influencer | 500K+ Followers</p>
@@ -254,7 +242,7 @@ const Home = () => {
                 <p>"As a brand owner, finding genuine influencers was always a challenge. BrandLinkar made it effortless. Our campaigns now reach the right audience with incredible ROI."</p>
               </div>
               <div className="testimonial-author">
-                <img src="https://via.placeholder.com/60" alt="Michael Chen" />
+                <img src="https://img.freepik.com/free-photo/group-business-people_53419-5550.jpg" alt="Michael Chen" />
                 <div>
                   <h4>Michael Chen</h4>
                   <p>CEO, TechCorp | 500K+ Users</p>
@@ -266,7 +254,7 @@ const Home = () => {
                 <p>"The platform's transparency and support team are outstanding. I've built lasting relationships that have boosted my career and income significantly."</p>
               </div>
               <div className="testimonial-author">
-                <img src="https://via.placeholder.com/60" alt="Emma Rodriguez" />
+                <img src="https://ocdn.eu/pulscms-transforms/1/zsrk9kuTURBXy9jMDFkNWFlOS05NTRhLTRhNmUtYTZiOC0xNTk4NTRlMjJkMTIuanBlZ5GVAs0EsADDw94AAaEwAQ" alt="Emma Rodriguez" />
                 <div>
                   <h4>Emma Rodriguez</h4>
                   <p>Fashion Influencer | 1M+ Followers</p>
@@ -278,7 +266,7 @@ const Home = () => {
                 <p>"BrandLinkar's matching algorithm is spot-on. We've partnered with influencers who truly understand our brand, leading to authentic campaigns and real growth."</p>
               </div>
               <div className="testimonial-author">
-                <img src="https://via.placeholder.com/60" alt="David Park" />
+                <img src="https://www.pngkey.com/png/detail/982-9820724_corporate-solutions.png" alt="David Park" />
                 <div>
                   <h4>David Park</h4>
                   <p>Marketing Director, BeautyGlow | 3M+ Customers</p>
@@ -295,9 +283,6 @@ const Home = () => {
           <p>Real partnerships, real results. See how BrandLinkar has transformed businesses and careers.</p>
           <div className="stories-grid">
             <div className="story-card">
-              <div className="story-image">
-                <img src="https://via.placeholder.com/300x200" alt="Fashion Campaign" />
-              </div>
               <div className="story-content">
                 <h3>FashionHub x Emma Rodriguez</h3>
                 <p>A sustainable fashion brand partnered with a lifestyle influencer, resulting in 300% increase in website traffic and 50K new followers.</p>
@@ -307,10 +292,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="story-card">
-              <div className="story-image">
-                <img src="https://via.placeholder.com/300x200" alt="Tech Campaign" />
-              </div>
+            <div className="story-card">           
               <div className="story-content">
                 <h3>TechCorp x Sarah Johnson</h3>
                 <p>A tech startup collaborated with a tech influencer, leading to 10K app downloads and $50K in revenue within the first month.</p>
@@ -321,9 +303,6 @@ const Home = () => {
               </div>
             </div>
             <div className="story-card">
-              <div className="story-image">
-                <img src="https://via.placeholder.com/300x200" alt="Food Campaign" />
-              </div>
               <div className="story-content">
                 <h3>FoodieDelight x Alex Kim</h3>
                 <p>A food delivery service partnered with a food blogger, achieving 200% increase in orders and viral social media buzz.</p>
@@ -332,6 +311,35 @@ const Home = () => {
                   <span>Viral Success</span>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="event-highlights" className="event-highlights-section">
+        <div className="event-highlights-container">
+          <h2>Event Highlights</h2>
+          <p>Stay updated with our latest events, webinars, and networking opportunities.</p>
+          <div className="events-grid">
+            <div className="event-card">
+              <h3>Influencer Marketing Summit</h3>
+              <div className="event-date">March 15, 2024</div>
+              <p>Join industry leaders for insights on the latest trends in influencer marketing and brand partnerships.</p>
+            </div>
+            <div className="event-card">
+              <h3>BrandLinkar Networking Mixer</h3>
+              <div className="event-date">April 22, 2024</div>
+              <p>Connect with fellow influencers and brands in an exclusive networking event designed for collaboration.</p>
+            </div>
+            <div className="event-card">
+              <h3>Content Creation Workshop</h3>
+              <div className="event-date">May 10, 2024</div>
+              <p>Learn advanced content creation techniques and strategies to boost engagement and grow your audience.</p>
+            </div>
+            <div className="event-card">
+              <h3>Partnership Success Stories Webinar</h3>
+              <div className="event-date">June 5, 2024</div>
+              <p>Hear from successful brand-influencer partnerships and discover what makes collaborations thrive.</p>
             </div>
           </div>
         </div>
@@ -385,19 +393,19 @@ const Home = () => {
               <div className="contact-item">
                 <i className="fas fa-envelope"></i>
                 <div>
-                  <strong>Email:</strong> info@brandlinkar.com
+                  <strong>Email:</strong> jangidkind@gmail.com
                 </div>
               </div>
               <div className="contact-item">
                 <i className="fas fa-phone"></i>
                 <div>
-                  <strong>Phone:</strong> +1 (555) 123-4567
+                  <strong>Phone:</strong> +918619448841
                 </div>
               </div>
               <div className="contact-item">
                 <i className="fas fa-map-marker-alt"></i>
                 <div>
-                  <strong>Address:</strong> 123 Innovation Street, Tech City, TC 12345
+                  <strong>Address:</strong> Malviya Nagar, Jaipur, Rajasthan, India 302017
                 </div>
               </div>
             </div>
@@ -423,6 +431,11 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <RegistrationSelection
+        isOpen={showRegistrationModal}
+        onClose={() => setShowRegistrationModal(false)}
+      />
     </>
   );
 };
