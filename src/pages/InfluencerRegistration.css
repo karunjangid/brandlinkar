@@ -434,23 +434,96 @@
 }
 
 @media (max-width: 480px) {
-  .registration-header h1 {
-    font-size: 1.75rem;
+  .influencer-registration {
+    padding: 0.5rem;
   }
 
-  .registration-form {
+  .registration-container {
+    margin-top: 0.5rem;
+    overflow: visible;
+  }
+
+  .registration-header {
     padding: 1rem;
   }
 
+  .registration-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .registration-header p {
+    font-size: 0.9rem;
+  }
+
+  .back-button {
+    left: 0.5rem;
+    top: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .registration-form {
+    padding: 0.5rem;
+  }
+
   .form-section {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-section h2 {
+    font-size: 1.1rem;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .submit-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .greeting-form {
+    padding: 1.5rem 1rem;
+    margin: 0.5rem auto;
   }
 
   .greeting-form h1 {
     font-size: 1.75rem;
   }
 
+  .greeting-form p {
+    font-size: 1rem;
+  }
+
+  .greeting-form .form-group input,
+  .greeting-form .form-group select {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .greeting-form .submit-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .announcement-container {
+    padding: 0.5rem;
+  }
+
   .announcement-text {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
+  }
+
+  .speaker-avatar img {
+    width: 100px;
+    height: 100px;
   }
 }

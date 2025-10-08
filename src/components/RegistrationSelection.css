@@ -188,3 +188,54 @@
     margin-bottom: 1.5rem;
   }
 }
+
+@media (max-width: 480px) {
+  .registration-modal-content {
+    width: 70%;
+    height: 70%;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .registration-cards-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 0rem;
+  }
+
+  .registration-card {
+    flex: none;
+    width: 80%;
+    height: 30%;
+    position: relative;
+    bottom: -50px;
+    padding: 50px;
+    margin: 0px;
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .registration-card h2 {
+    font-size: 0.9rem;
+  }
+
+  .tagline {
+    font-size: 0.6rem;
+    margin: 0.5rem 0 1.5rem 0;
+  }
+
+  .card-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.7rem;
+  }
+
+  .close-button {
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 1.5rem;
+  }
+}
