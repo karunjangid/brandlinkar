@@ -30,6 +30,8 @@ const Splash = ({ onComplete }) => {
     return () => {};
   }, [onComplete]);
 
+  const isMobile = window.innerWidth <= 480;
+
   return (
     <div style={{
       position: 'fixed',
@@ -51,53 +53,47 @@ const Splash = ({ onComplete }) => {
           transform: logoVisible ? (logoOut ? 'translateY(-30px) scale(0.95)' : 'translateY(0) scale(1)') : 'translateY(50px) scale(0.9)',
           transition: logoVisible ? (logoOut ? 'opacity 1.5s ease-out, transform 1.5s ease-out' : 'opacity 1.5s ease-in, transform 1.5s ease-in') : 'none',
           cursor: 'pointer',
+          fontSize: isMobile ? '3rem' : '6rem',
+          textAlign: 'center',
+          color: '#2c3e50',
+          textShadow: '0 2px 4px rgba(0,0,0,0.1)',
         }}
         onClick={() => onComplete()}
         title="Click to skip"
       >
+        {text.split('').map((letter, i) => (
+          <span
+            key={i}
+            style={{
+              display: 'inline-block',
+              color: filledLetters.includes(i) ? '#3498db' : '#2c3e50',
+              transition: 'all 0.6s ease',
+              position: 'relative',
+              cursor: 'pointer',
+              transform: filledLetters.includes(i) ? 'scale(1.02)' : 'scale(1)',
+              textShadow: filledLetters.includes(i) ? '0 0 20px rgba(52, 152, 219, 0.5)' : '0 2px 4px rgba(0,0,0,0.1)',
+            }}
+            onMouseEnter={(e) => {
+              if (filledLetters.includes(i)) {
+                e.target.style.color = '#2980b9';
+                e.target.style.textShadow = '0 0 30px rgba(52, 152, 219, 0.7)';
+                e.target.style.transform = 'scale(1.05)';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (filledLetters.includes(i)) {
+                e.target.style.color = '#3498db';
+                e.target.style.textShadow = '0 0 20px rgba(52, 152, 219, 0.5)';
+                e.target.style.transform = 'scale(1.02)';
+              }
+            }}
+          >
+            {letter}
+          </span>
+        ))}
         <div style={{
-          fontSize: '6rem',
-          fontWeight: 700,
-          letterSpacing: '0.1em',
-          textAlign: 'center',
-          color: '#2c3e50',
-          textShadow: '0 2px 4px rgba(0,0,0,0.1)',
-        }}>
-          {text.split('').map((letter, i) => (
-            <span
-              key={i}
-              style={{
-                display: 'inline-block',
-                color: filledLetters.includes(i) ? '#3498db' : '#2c3e50',
-                transition: 'all 0.6s ease',
-                position: 'relative',
-                cursor: 'pointer',
-                transform: filledLetters.includes(i) ? 'scale(1.02)' : 'scale(1)',
-                textShadow: filledLetters.includes(i) ? '0 0 20px rgba(52, 152, 219, 0.5)' : '0 2px 4px rgba(0,0,0,0.1)',
-              }}
-              onMouseEnter={(e) => {
-                if (filledLetters.includes(i)) {
-                  e.target.style.color = '#2980b9';
-                  e.target.style.textShadow = '0 0 30px rgba(52, 152, 219, 0.7)';
-                  e.target.style.transform = 'scale(1.05)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (filledLetters.includes(i)) {
-                  e.target.style.color = '#3498db';
-                  e.target.style.textShadow = '0 0 20px rgba(52, 152, 219, 0.5)';
-                  e.target.style.transform = 'scale(1.02)';
-                }
-              }}
-            >
-              {letter}
-            </span>
-          ))}
-        </div>
-        <div style={{
-          textAlign: 'center',
           marginTop: '1rem',
-          fontSize: '1.5rem',
+          fontSize: isMobile ? '1rem' : '1.5rem',
           color: '#7f8c8d',
           fontWeight: 300,
           opacity: logoVisible ? 1 : 0,
