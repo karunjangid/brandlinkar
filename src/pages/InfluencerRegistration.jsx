@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { auth, db, storage } from '../firebaseConfig';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import './InfluencerRegistration.css';
 
 const announcementTexts = {
@@ -34,6 +38,7 @@ const InfluencerRegistration = () => {
     bestPicture: null,
     additionalSocialMedia: []
   });
+  const [loading, setLoading] = useState(false);
 
   // Handle greeting input change
   const handleGreetingChange = (e) => {
@@ -105,10 +110,17 @@ const InfluencerRegistration = () => {
 
   // Handle file upload
   const handleFileChange = (e) => {
-    setFormData({
-      ...formData,
-      bestPicture: e.target.files[0]
-    });
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setFormData({
+          ...formData,
+          bestPicture: e.target.result // data URL
+        });
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   // Add additional social media account
@@ -139,12 +151,53 @@ const InfluencerRegistration = () => {
   };
 
   // Submit detailed form
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Influencer Registration:', formData);
-    // For now, just navigate back to home
-    navigate('/');
+    setLoading(true);
+
+    try {
+      // Check if passwords match
+      if (formData.password !== formData.confirmPassword) {
+        alert("Passwords do not match!");
+        setLoading(false);
+        return;
+      }
+
+      // Create user account with Firebase Auth
+      const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      const user = userCredential.user;
+      console.log("User created with ID: ", user.uid);
+
+      // Exclude password fields from data to save
+      const { password, confirmPassword, ...dataToSave } = formData;
+
+      // Save user data to Firestore
+      const docRef = await addDoc(collection(db, "influencers"), {
+        ...dataToSave,
+        userId: user.uid, // Link data to authenticated user
+        createdAt: new Date()
+      });
+      console.log("Document written with ID: ", docRef.id);
+
+      // Navigate to success page
+      navigate('/submission-success');
+    } catch (error) {
+      console.error("Error submitting form: ", error);
+      let errorMessage = "Error submitting form: " + error.message;
+
+      // Handle specific Firebase Auth errors
+      if (error.code === 'auth/email-already-in-use') {
+        errorMessage = "An account with this email already exists. Please use a different email.";
+      } else if (error.code === 'auth/weak-password') {
+        errorMessage = "Password is too weak. Please choose a stronger password.";
+      } else if (error.code === 'auth/invalid-email') {
+        errorMessage = "Invalid email address. Please enter a valid email.";
+      }
+
+      alert(errorMessage);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -426,7 +479,9 @@ const InfluencerRegistration = () => {
               </div>
 
               <div className="form-actions">
-                <button type="submit" className="submit-button">Create Account</button>
+                <button type="submit" className="submit-button" disabled={loading}>
+                  {loading ? 'Submitting...' : 'Create Account'}
+                </button>
               </div>
             </form>
           </>
