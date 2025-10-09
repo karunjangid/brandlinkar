@@ -65,12 +65,10 @@ const Home = ({ showRegistrationModal, setShowRegistrationModal }) => {
             <div className="about-text">
               <h2>About BrandLinkar</h2>
               <p>
-                BrandLinkar bridges the gap between brands and influencers, creating authentic partnerships that drive results.
-                Our platform is designed to foster collaboration, transparency, and growth for both parties.
+                BrandLinkar bridges the gap between brands and influencers, creating authentic partnerships that drive results. Our platform is designed to foster collaboration, transparency, and growth for both parties.
               </p>
               <p>
-                We connect brands with the perfect influencers to amplify their reach and drive meaningful engagement.
-                Join thousands of successful partnerships that have transformed businesses and careers.
+                We connect brands with the perfect influencers to amplify their reach and drive meaningful engagement. Join thousands of successful partnerships that have transformed businesses and careers.
               </p>
             </div>
             <div className="about-image">
@@ -177,14 +175,14 @@ const Home = ({ showRegistrationModal, setShowRegistrationModal }) => {
 
       <section id="team" className="team-section">
         <div className="team-container">
-          <h2>Our Team</h2>
-          <p>Meet the passionate professionals behind BrandLinkar.</p>
+          <h2>Meet Our Team</h2>
+          <p>Passionate professionals dedicated to connecting brands and influencers for mutual success.</p>
           <div className="team-grid">
             <div className="team-member">
               <img src={Teammm} alt="Karun Kumar Jangid" className="member-image" />
               <h3>Karun Kumar Jangid</h3>
               <p className="member-role">CEO & Founder</p>
-              <p className="member-bio">Experienced entrepreneur with a passion for connecting brands and influencers.</p>
+              <p className="member-bio">Visionary leader with expertise in digital marketing and influencer partnerships, driving innovation in the industry.</p>
             </div>
           </div>
         </div>
@@ -193,83 +191,82 @@ const Home = ({ showRegistrationModal, setShowRegistrationModal }) => {
       <section id="how-it-works" className="how-it-works-section">
         <div className="how-it-works-container">
           <h2>How It Works</h2>
-          <p>Simple steps to connect brands and influencers for mutual success.</p>
+          <p>Simple steps to connect brands and influencers for successful partnerships.</p>
           <div className="steps-grid">
             <div className="step-card">
               <div className="step-number">1</div>
-              <h3>Sign Up</h3>
-              <p>Create your account as a brand or influencer and complete your profile.</p>
+              <h3>Register & Create Profile</h3>
+              <p>Sign up as a brand or influencer and create your detailed profile showcasing your expertise and requirements.</p>
             </div>
             <div className="step-card">
               <div className="step-number">2</div>
-              <h3>Find Matches</h3>
-              <p>Browse through our curated list of partners that match your goals and values.</p>
+              <h3>Find Perfect Matches</h3>
+              <p>Use our advanced matching algorithm to discover compatible partners based on niche, audience, and goals.</p>
             </div>
             <div className="step-card">
               <div className="step-number">3</div>
-              <h3>Connect & Collaborate</h3>
-              <p>Reach out to potential partners and start building meaningful relationships.</p>
+              <h3>Collaborate & Create</h3>
+              <p>Connect directly with your matches, discuss campaign details, and create authentic content together.</p>
             </div>
             <div className="step-card">
               <div className="step-number">4</div>
-              <h3>Launch Campaigns</h3>
-              <p>Execute successful campaigns and track your results in real-time.</p>
+              <h3>Track Success & Grow</h3>
+              <p>Monitor campaign performance, measure ROI, and build long-term relationships for continued growth.</p>
             </div>
           </div>
         </div>
       </section>
 
-
       <section id="testimonials" className="testimonials-section">
         <div className="testimonials-container">
-          <h2>What Our Partners Say</h2>
-          <p>Hear from the influencers and brand owners who have transformed their careers and businesses with BrandLinkar.</p>
+          <h2>What Our Users Say</h2>
+          <p>Hear from brands and influencers who have transformed their success through our platform.</p>
           <div className="testimonials-grid">
             <div className="testimonial-card">
               <div className="testimonial-content">
-                <p>"BrandLinkar helped me connect with amazing brands that aligned with my values. My engagement rates skyrocketed, and I've never felt more authentic in my partnerships."</p>
+                <p>"BrandLinkar helped us connect with the perfect influencers for our campaign. The results exceeded our expectations with a 300% increase in engagement."</p>
               </div>
               <div className="testimonial-author">
                 <img src="https://sayjglobalpartners.com/wp-content/uploads/2022/12/Depositphotos_24349949_l-2015.jpg" alt="Sarah Johnson" />
                 <div>
                   <h4>Sarah Johnson</h4>
-                  <p>Lifestyle Influencer | 500K+ Followers</p>
+                  <p>Marketing Director, FashionHub</p>
                 </div>
               </div>
             </div>
             <div className="testimonial-card">
               <div className="testimonial-content">
-                <p>"As a brand owner, finding genuine influencers was always a challenge. BrandLinkar made it effortless. Our campaigns now reach the right audience with incredible ROI."</p>
+                <p>"As an influencer, BrandLinkar opened doors to amazing brand partnerships. The platform is intuitive and the matches are spot-on."</p>
               </div>
               <div className="testimonial-author">
                 <img src="https://img.freepik.com/free-photo/group-business-people_53419-5550.jpg" alt="Michael Chen" />
                 <div>
                   <h4>Michael Chen</h4>
-                  <p>CEO, TechCorp | 500K+ Users</p>
+                  <p>Lifestyle Influencer</p>
                 </div>
               </div>
             </div>
             <div className="testimonial-card">
               <div className="testimonial-content">
-                <p>"The platform's transparency and support team are outstanding. I've built lasting relationships that have boosted my career and income significantly."</p>
+                <p>"The quality of partnerships on BrandLinkar is unmatched. We've seen significant growth in our brand awareness and sales."</p>
               </div>
               <div className="testimonial-author">
                 <img src="https://ocdn.eu/pulscms-transforms/1/zsrk9kuTURBXy9jMDFkNWFlOS05NTRhLTRhNmUtYTZiOC0xNTk4NTRlMjJkMTIuanBlZ5GVAs0EsADDw94AAaEwAQ" alt="Emma Rodriguez" />
                 <div>
                   <h4>Emma Rodriguez</h4>
-                  <p>Fashion Influencer | 1M+ Followers</p>
+                  <p>CEO, BeautyGlow</p>
                 </div>
               </div>
             </div>
             <div className="testimonial-card">
               <div className="testimonial-content">
-                <p>"BrandLinkar's matching algorithm is spot-on. We've partnered with influencers who truly understand our brand, leading to authentic campaigns and real growth."</p>
+                <p>"BrandLinkar made it easy to find brands that align with my values. The collaborations have been authentic and profitable."</p>
               </div>
               <div className="testimonial-author">
                 <img src="https://www.pngkey.com/png/detail/982-9820724_corporate-solutions.png" alt="David Park" />
                 <div>
                   <h4>David Park</h4>
-                  <p>Marketing Director, BeautyGlow | 3M+ Customers</p>
+                  <p>Fitness Influencer</p>
                 </div>
               </div>
             </div>
@@ -280,35 +277,35 @@ const Home = ({ showRegistrationModal, setShowRegistrationModal }) => {
       <section id="success-stories" className="success-stories-section">
         <div className="success-stories-container">
           <h2>Success Stories</h2>
-          <p>Real partnerships, real results. See how BrandLinkar has transformed businesses and careers.</p>
+          <p>Real results from partnerships that transformed businesses and careers.</p>
           <div className="stories-grid">
             <div className="story-card">
               <div className="story-content">
-                <h3>FashionHub x Emma Rodriguez</h3>
-                <p>A sustainable fashion brand partnered with a lifestyle influencer, resulting in 300% increase in website traffic and 50K new followers.</p>
+                <h3>FashionHub Campaign Success</h3>
+                <p>Partnered with top fashion influencers to launch a sustainable clothing line, resulting in massive brand awareness and customer engagement.</p>
                 <div className="story-stats">
                   <span>300% Traffic Increase</span>
                   <span>50K New Followers</span>
                 </div>
               </div>
             </div>
-            <div className="story-card">           
+            <div className="story-card">
               <div className="story-content">
-                <h3>TechCorp x Sarah Johnson</h3>
-                <p>A tech startup collaborated with a tech influencer, leading to 10K app downloads and $50K in revenue within the first month.</p>
+                <h3>TechCorp App Launch</h3>
+                <p>Collaborated with tech influencers to promote a new productivity app, driving downloads and establishing market presence.</p>
                 <div className="story-stats">
-                  <span>10K Downloads</span>
-                  <span>$50K Revenue</span>
+                  <span>10K App Downloads</span>
+                  <span>$50K Revenue Generated</span>
                 </div>
               </div>
             </div>
             <div className="story-card">
               <div className="story-content">
-                <h3>FoodieDelight x Alex Kim</h3>
-                <p>A food delivery service partnered with a food blogger, achieving 200% increase in orders and viral social media buzz.</p>
+                <h3>FoodieDelight Viral Campaign</h3>
+                <p>Worked with food bloggers to create authentic content that went viral, boosting orders and establishing brand authority.</p>
                 <div className="story-stats">
                   <span>200% Order Increase</span>
-                  <span>Viral Success</span>
+                  <span>Viral Social Media Reach</span>
                 </div>
               </div>
             </div>
@@ -318,28 +315,28 @@ const Home = ({ showRegistrationModal, setShowRegistrationModal }) => {
 
       <section id="event-highlights" className="event-highlights-section">
         <div className="event-highlights-container">
-          <h2>Event Highlights</h2>
-          <p>Stay updated with our latest events, webinars, and networking opportunities.</p>
+          <h2>Upcoming Events</h2>
+          <p>Join us for exciting events designed to connect, educate, and inspire the influencer marketing community.</p>
           <div className="events-grid">
             <div className="event-card">
               <h3>Influencer Marketing Summit</h3>
               <div className="event-date">March 15, 2024</div>
-              <p>Join industry leaders for insights on the latest trends in influencer marketing and brand partnerships.</p>
+              <p>A comprehensive summit featuring industry leaders, networking opportunities, and the latest trends in influencer marketing.</p>
             </div>
             <div className="event-card">
-              <h3>BrandLinkar Networking Mixer</h3>
+              <h3>Brand-Influencer Mixer</h3>
               <div className="event-date">April 22, 2024</div>
-              <p>Connect with fellow influencers and brands in an exclusive networking event designed for collaboration.</p>
+              <p>An exclusive networking event where brands and influencers can connect, collaborate, and build lasting partnerships.</p>
             </div>
             <div className="event-card">
               <h3>Content Creation Workshop</h3>
               <div className="event-date">May 10, 2024</div>
-              <p>Learn advanced content creation techniques and strategies to boost engagement and grow your audience.</p>
+              <p>Learn from top content creators about crafting authentic, engaging content that drives results for brands and audiences.</p>
             </div>
             <div className="event-card">
-              <h3>Partnership Success Stories Webinar</h3>
+              <h3>Digital Marketing Webinar</h3>
               <div className="event-date">June 5, 2024</div>
-              <p>Hear from successful brand-influencer partnerships and discover what makes collaborations thrive.</p>
+              <p>Explore the future of digital marketing with expert insights on emerging platforms, AI tools, and measurement strategies.</p>
             </div>
           </div>
         </div>
@@ -347,46 +344,47 @@ const Home = ({ showRegistrationModal, setShowRegistrationModal }) => {
 
       <section id="trust" className="trust-section">
         <div className="trust-container">
-          <h2>Why Choose BrandLinkar?</h2>
-          <p>Built on trust, transparency, and results. Join thousands who have found success with us.</p>
+          <h2>Why Choose BrandLinkar</h2>
+          <p>Experience the difference with our commitment to excellence, security, and authentic partnerships.</p>
           <div className="trust-grid">
             <div className="trust-item">
               <i className="fas fa-shield-alt"></i>
-              <h3>Secure & Verified</h3>
-              <p>All partnerships are verified and secure. Your data and collaborations are protected.</p>
+              <h3>Secure Platform</h3>
+              <p>Advanced security measures protect your data and ensure safe, confidential transactions.</p>
             </div>
             <div className="trust-item">
               <i className="fas fa-handshake"></i>
               <h3>Authentic Partnerships</h3>
-              <p>We match brands and influencers based on shared values and genuine connections.</p>
+              <p>We facilitate genuine connections between brands and influencers for meaningful collaborations.</p>
             </div>
             <div className="trust-item">
               <i className="fas fa-chart-line"></i>
               <h3>Proven Results</h3>
-              <p>Our platform has delivered measurable growth for businesses and influencers alike.</p>
+              <p>Track campaign performance with detailed analytics and measurable ROI insights.</p>
             </div>
             <div className="trust-item">
               <i className="fas fa-headset"></i>
               <h3>24/7 Support</h3>
-              <p>Our dedicated support team is here to help you succeed every step of the way.</p>
+              <p>Our dedicated support team is always ready to assist you with any questions or concerns.</p>
             </div>
             <div className="trust-item">
               <i className="fas fa-award"></i>
-              <h3>Award-Winning Platform</h3>
-              <p>Recognized for innovation and excellence in influencer-brand partnerships.</p>
+              <h3>Award-Winning</h3>
+              <p>Recognized industry leader with multiple awards for innovation in influencer marketing.</p>
             </div>
             <div className="trust-item">
               <i className="fas fa-users"></i>
               <h3>Community Driven</h3>
-              <p>Join a thriving community of successful brands and influencers.</p>
+              <p>Join a thriving community of brands and influencers committed to mutual growth and success.</p>
             </div>
           </div>
         </div>
       </section>
-            <section id="contact" className="contact-section">
+
+      <section id="contact" className="contact-section">
         <div className="contact-container">
           <h2>Contact Us</h2>
-          <p>Get in touch with us for partnerships, inquiries, or support.</p>
+          <p>Get in touch with our team to learn more about how BrandLinkar can help your business grow.</p>
           <div className="contact-content">
             <div className="contact-info">
               <h3>Get In Touch</h3>
@@ -411,20 +409,20 @@ const Home = ({ showRegistrationModal, setShowRegistrationModal }) => {
             </div>
             <form className="contact-form">
               <div className="form-group">
-                <label htmlFor="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+                <label htmlFor="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required />
               </div>
               <div className="form-group">
-                <label htmlFor="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+                <label htmlFor="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required />
               </div>
               <div className="form-group">
                 <label htmlFor="subject">Subject</label>
-                <input type="text" id="subject" name="subject" placeholder="What's this about?" required />
+                <input type="text" id="subject" name="subject" placeholder="Enter subject" required />
               </div>
               <div className="form-group">
                 <label htmlFor="message">Message</label>
-                <textarea id="message" name="message" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+                <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
               </div>
               <button type="submit" className="submit-btn">Send Message</button>
             </form>
