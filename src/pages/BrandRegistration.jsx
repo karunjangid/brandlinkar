@@ -4,215 +4,124 @@ import './BrandRegistration.css';
 
 const BrandRegistration = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    companyName: '',
-    contactName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    phone: '',
-    website: '',
-    industry: '',
-    companySize: '',
-    description: '',
-    goals: ''
-  });
+  const [selectedService, setSelectedService] = useState(null);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const brandingServices = [
+    {
+      id: 'product',
+      title: 'Product-Based Branding',
+      description: 'Transform everyday products into brand ambassadors',
+      icon: 'fas fa-box-open',
+      items: ['Bottle Box Jar Branding', 'Reusable Bags & Containers', 'Branded Tape & Wrapping', 'Custom Packaging Solutions'],
+      color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      bgColor: 'rgba(102, 126, 234, 0.1)'
+    },
+    {
+      id: 'environmental',
+      title: 'Environmental Branding',
+      description: 'Make your presence felt across the cityscape',
+      icon: 'fas fa-building',
+      items: ['Billboards & Hoardings', 'Posters & Wall Art', 'Vehicle Branding', 'Outdoor Advertising Solutions'],
+      color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+      bgColor: 'rgba(240, 147, 251, 0.1)'
+    },
+    {
+      id: 'event',
+      title: 'Event-Based Branding',
+      description: 'Create memorable experiences at every touchpoint',
+      icon: 'fas fa-calendar-alt',
+      items: ['Pop-up Stalls & Kiosks', 'Festival Sponsorship', 'Branded Merchandise', 'Event Activation'],
+      color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+      bgColor: 'rgba(79, 172, 254, 0.1)'
+    },
+    {
+      id: 'social',
+      title: 'Social Media Branding',
+      description: 'Leverage influencer power for authentic reach',
+      icon: 'fas fa-users',
+      items: ['Influencer Collaborations', 'Social Media Campaigns', 'Content Creation', 'Digital Marketing'],
+      color: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+      bgColor: 'rgba(67, 233, 123, 0.1)'
+    },
+    {
+      id: 'digital',
+      title: 'Digital Branding',
+      description: 'Dominate the online space with innovative solutions',
+      icon: 'fas fa-globe',
+      items: ['Website Development', 'Mobile Apps', 'Digital Marketing', 'SEO Optimization'],
+      color: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+      bgColor: 'rgba(250, 112, 154, 0.1)'
+    },
+    {
+      id: 'content',
+      title: 'Content Creation',
+      description: 'Tell your story through compelling visual narratives',
+      icon: 'fas fa-video',
+      items: ['Video Production', 'Photography', 'Blog Content', 'Brand Storytelling'],
+      color: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+      bgColor: 'rgba(168, 237, 234, 0.1)'
+    }
+  ];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Brand Registration:', formData);
-    // For now, just navigate back to home
-    navigate('/');
+  const handleServiceSelect = (serviceId) => {
+    setSelectedService(serviceId);
+    // Navigate to the actual registration form with the selected service
+    navigate('/brand-registration-form', { state: { selectedService: serviceId } });
   };
 
   return (
     <div className="brand-registration">
-      <div className="registration-container">
-        <div className="registration-header">
+      <div className="services-container">
+        <div className="services-header">
           <button className="back-button" onClick={() => navigate('/')}>
             <i className="fas fa-arrow-left"></i> Back
           </button>
-          <h1>Join as a Brand Owner or Event Organizer</h1>
-          <p>Connect with authentic influencers, launch impactful campaigns, and drive real results for your brand or event.</p>
+          <h1>Choose Your Branding Service</h1>
+          <p>Select the type of branding solution that best fits your business needs. Our expert team will help you create impactful campaigns.</p>
         </div>
 
-        <form className="registration-form" onSubmit={handleSubmit}>
-          <div className="form-section">
-            <h2>Company Information</h2>
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="companyName">Company/Brand Name *</label>
-                <input
-                  type="text"
-                  id="companyName"
-                  name="companyName"
-                  value={formData.companyName}
-                  onChange={handleChange}
-                  required
-                />
+        <div className="services-grid">
+          {brandingServices.map((service) => (
+            <div
+              key={service.id}
+              className="service-card"
+              onClick={() => handleServiceSelect(service.id)}
+              style={{ '--card-bg': service.bgColor, '--card-gradient': service.color }}
+            >
+              <div className="card-header">
+                <div className="service-icon">
+                  <i className={service.icon}></i>
+                </div>
+                <h3>{service.title}</h3>
               </div>
-              <div className="form-group">
-                <label htmlFor="contactName">Contact Person Name *</label>
-                <input
-                  type="text"
-                  id="contactName"
-                  name="contactName"
-                  value={formData.contactName}
-                  onChange={handleChange}
-                  required
-                />
+
+              <p className="service-description">{service.description}</p>
+
+              <ul className="service-items">
+                {service.items.map((item, index) => (
+                  <li key={index}>
+                    <i className="fas fa-check-circle"></i>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="card-footer">
+                <button className="select-service-btn">
+                  Choose This Service
+                  <i className="fas fa-arrow-right"></i>
+                </button>
+              </div>
+
+              {/* 3D Effect Elements */}
+              <div className="card-3d-elements">
+                <div className="floating-shape shape-1"></div>
+                <div className="floating-shape shape-2"></div>
+                <div className="floating-shape shape-3"></div>
               </div>
             </div>
-
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="email">Email Address *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="phone">Phone Number</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="password">Password *</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="confirmPassword">Confirm Password *</label>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="website">Website</label>
-                <input
-                  type="url"
-                  id="website"
-                  name="website"
-                  value={formData.website}
-                  onChange={handleChange}
-                  placeholder="https://yourwebsite.com"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="industry">Industry *</label>
-                <select
-                  id="industry"
-                  name="industry"
-                  value={formData.industry}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="">Select Industry</option>
-                  <option value="fashion">Fashion & Apparel</option>
-                  <option value="beauty">Beauty & Cosmetics</option>
-                  <option value="food">Food & Beverage</option>
-                  <option value="tech">Technology</option>
-                  <option value="health">Health & Wellness</option>
-                  <option value="fitness">Fitness & Sports</option>
-                  <option value="travel">Travel & Tourism</option>
-                  <option value="entertainment">Entertainment</option>
-                  <option value="automotive">Automotive</option>
-                  <option value="finance">Finance & Banking</option>
-                  <option value="education">Education</option>
-                  <option value="events">Events & Entertainment</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="companySize">Company Size *</label>
-              <select
-                id="companySize"
-                name="companySize"
-                value={formData.companySize}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select Company Size</option>
-                <option value="1-10">1-10 employees</option>
-                <option value="11-50">11-50 employees</option>
-                <option value="51-200">51-200 employees</option>
-                <option value="201-1000">201-1000 employees</option>
-                <option value="1000+">1000+ employees</option>
-                <option value="startup">Startup</option>
-                <option value="freelancer">Freelancer/Individual</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="form-section">
-            <h2>About Your Brand/Event</h2>
-            <div className="form-group">
-              <label htmlFor="description">Company/Brand Description *</label>
-              <textarea
-                id="description"
-                name="description"
-                rows="4"
-                value={formData.description}
-                onChange={handleChange}
-                placeholder="Tell influencers about your company, brand values, products/services..."
-                required
-              ></textarea>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="goals">Campaign Goals & Target Audience</label>
-              <textarea
-                id="goals"
-                name="goals"
-                rows="3"
-                value={formData.goals}
-                onChange={handleChange}
-                placeholder="What are your marketing goals? Who is your target audience?"
-              ></textarea>
-            </div>
-          </div>
-
-          <div className="form-actions">
-            <button type="submit" className="submit-button">Create Account</button>
-          </div>
-        </form>
+          ))}
+        </div>  
       </div>
     </div>
   );
