@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './SubmissionSuccess.css';
 
 const SubmissionSuccess = () => {
+  const location = useLocation();
+  const isBrand = location.state?.type === 'brand';
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     // Trigger confetti animation after component mounts
     setTimeout(() => setShowConfetti(true), 500);
-  }, []);
+    // Show modal for brand after a delay
+    if (isBrand) {
+      setTimeout(() => setShowModal(true), 2000);
+    }
+  }, [isBrand]);
 
   return (
     <div className="submission-success">
@@ -51,7 +59,7 @@ const SubmissionSuccess = () => {
               Thanks for showing interest in <span className="brand-name">BrandLinkar</span>! 🚀
             </p>
             <p className="sub-message">
-              Your influencer registration has been submitted successfully! 💫
+              {isBrand ? 'Your brand packaging inquiry has been submitted successfully! 💫' : 'Your influencer registration has been submitted successfully! 💫'}
             </p>
             <p className="timeline">
               We'll get back to you within <span className="highlight">24-48 hours</span> ⏰
@@ -59,7 +67,7 @@ const SubmissionSuccess = () => {
           </div>
 
           <div className="social-proof">
-            <p>Join thousands of influencers already on our platform! 🌟</p>
+            <p>{isBrand ? 'Join thousands of brands already on our platform! 🌟' : 'Join thousands of influencers already on our platform! 🌟'}</p>
           </div>
 
           <div className="action-buttons">
@@ -97,6 +105,18 @@ const SubmissionSuccess = () => {
           <span className="emoji sparkles">✨</span>
         </div>
       </div>
+
+      {/* Brand Success Modal */}
+      {showModal && (
+        <div className="brand-modal-overlay" onClick={() => setShowModal(false)}>
+          <div className="brand-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-icon">🎉</div>
+            <h2>Success!</h2>
+            <p>Your details captured successfully! One of our team members will connect with you within 24-48 hours.</p>
+            <button className="modal-close-btn" onClick={() => setShowModal(false)}>Got it!</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -11,6 +11,7 @@ import Partners from './pages/Partners'
 import Contact from './pages/Contact'
 import InfluencerRegistration from './pages/InfluencerRegistration'
 import BrandRegistration from './pages/BrandRegistration'
+import BrandRegistrationForm from './pages/BrandRegistrationForm'
 import SubmissionSuccess from './pages/SubmissionSuccess'
 import './App.css'
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/influencer-registration" element={<InfluencerRegistration />} />
         <Route path="/brand-registration" element={<BrandRegistration />} />
+        <Route path="/brand-registration-form" element={<BrandRegistrationForm />} />
         <Route path="/submission-success" element={<SubmissionSuccess />} />
       </Routes>
       <Footer />
