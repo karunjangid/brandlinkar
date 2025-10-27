@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth, db, storage } from '../firebaseConfig';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useAuth } from '../contexts/AuthContext';
+import { db, storage } from '../firebaseConfig';
 import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import './InfluencerRegistration.css';
@@ -15,6 +15,7 @@ const announcementTexts = {
 
 const InfluencerRegistration = () => {
   const navigate = useNavigate();
+  const { signup } = useAuth();
 
   const [step, setStep] = useState(1);
   const [displayedText, setDisplayedText] = useState('');
@@ -163,38 +164,28 @@ const InfluencerRegistration = () => {
         return;
       }
 
-      // Create user account with Firebase Auth
-      const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
-      const user = userCredential.user;
-      console.log("User created with ID: ", user.uid);
-
-      // Exclude password fields from data to save
-      const { password, confirmPassword, ...dataToSave } = formData;
-
-      // Save user data to Firestore
-      const docRef = await addDoc(collection(db, "influencers"), {
-        ...dataToSave,
-        userId: user.uid, // Link data to authenticated user
+      // Save to influencerRequests collection
+      await addDoc(collection(db, 'influencerRequests'), {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        password: formData.password,
+        phone: formData.phone,
+        socialMedia: formData.socialMedia,
+        followers: formData.followers,
+        niche: formData.niche,
+        bio: formData.bio,
+        bestPicture: formData.bestPicture,
+        additionalSocialMedia: formData.additionalSocialMedia,
+        approved: false,
         createdAt: new Date()
       });
-      console.log("Document written with ID: ", docRef.id);
 
       // Navigate to success page
       navigate('/submission-success');
     } catch (error) {
       console.error("Error submitting form: ", error);
-      let errorMessage = "Error submitting form: " + error.message;
-
-      // Handle specific Firebase Auth errors
-      if (error.code === 'auth/email-already-in-use') {
-        errorMessage = "An account with this email already exists. Please use a different email.";
-      } else if (error.code === 'auth/weak-password') {
-        errorMessage = "Password is too weak. Please choose a stronger password.";
-      } else if (error.code === 'auth/invalid-email') {
-        errorMessage = "Invalid email address. Please enter a valid email.";
-      }
-
-      alert(errorMessage);
+      alert("Error submitting form: " + error.message);
     } finally {
       setLoading(false);
     }

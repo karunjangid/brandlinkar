@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 import './Home.css';
-import RegistrationSelection from '../components/RegistrationSelection';
 import AboutUs from "../assets/aboutus.png";
 import beautyglow from "../assets/beautyglow.png";
 import fashionhub from "../assets/fashionhub.png";
@@ -10,7 +11,8 @@ import foodiedelight from "../assets/foodiedelight.png";
 import healthplus from "../assets/healthplus.png";
 import Teammm from "../assets/Team.png";
 
-const Home = ({ showRegistrationModal, setShowRegistrationModal }) => {
+const Home = () => {
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const statsRef = useRef(null);
 
   useEffect(() => {
@@ -51,11 +53,12 @@ const Home = ({ showRegistrationModal, setShowRegistrationModal }) => {
 
   return (
     <>
+      <NavBar showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} />
       <main id="home" className="home-hero">
         <div className="home-content">
           <h1>Welcome to BrandLinkar</h1>
           <p>Connecting Brands & Influencers for Mutual Growth</p>
-          <button className="home-button" onClick={() => setShowRegistrationModal(true)}>Register Now</button>
+          <button className="home-button" onClick={() => setShowLoginModal(true)}>Register Now</button>
         </div>
       </main>
 
@@ -430,10 +433,7 @@ const Home = ({ showRegistrationModal, setShowRegistrationModal }) => {
         </div>
       </section>
 
-      <RegistrationSelection
-        isOpen={showRegistrationModal}
-        onClose={() => setShowRegistrationModal(false)}
-      />
+      <Footer />
     </>
   );
 };

@@ -1,4 +1,6 @@
 import React from 'react';
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 import './HowItWorks.css';
 
 const HowItWorks = () => {
@@ -26,21 +28,25 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="how-it-works-section">
-      <div className="how-it-works-container">
-        <h2>How It Works</h2>
-        <p>Simple steps to connect brands and influencers for mutual success.</p>
-        <div className="steps-grid">
-          {steps.map((step, index) => (
-            <div key={index} className="step-card">
-              <div className="step-number">{step.step}</div>
-              <h3>{step.title}</h3>
-              <p>{step.description}</p>
-            </div>
-          ))}
+    <>
+      <NavBar />
+      <section className="how-it-works-section">
+        <div className="how-it-works-container">
+          <h2>How It Works</h2>
+          <p>Simple steps to connect brands and influencers for mutual success.</p>
+          <div className="steps-grid">
+            {steps.map((step, index) => (
+              <div key={index} className="step-card">
+                <div className="step-number">{step.step}</div>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <Footer />
+    </>
   );
 };
 

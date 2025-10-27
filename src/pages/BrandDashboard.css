@@ -1,0 +1,110 @@
+.brand-dashboard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 80px 20px 20px 20px; /* Added top padding for navbar */
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  backdrop-filter: blur(10px);
+}
+
+.dashboard-header h1 {
+  color: white;
+  margin: 0;
+}
+
+.logout-btn {
+  background: #ff4757;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background: #ff3742;
+}
+
+.dashboard-content {
+  display: grid;
+  gap: 30px;
+}
+
+.dashboard-section {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.dashboard-section h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.inquiries-grid, .campaigns-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.inquiry-card, .campaign-card {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+.inquiry-card h3, .campaign-card h3 {
+  margin-top: 0;
+}
+
+.view-applications-btn, .create-campaign-btn, .view-analytics-btn {
+  background: #2ed573;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.view-applications-btn:hover, .create-campaign-btn:hover, .view-analytics-btn:hover {
+  background: #1e9b5c;
+}
+
+.create-campaign-btn {
+  background: #3742fa;
+  margin-top: 20px;
+}
+
+.create-campaign-btn:hover {
+  background: #2f3542;
+}
+
+.analytics-section {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+.dashboard-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  font-size: 24px;
+  padding-top: 80px; /* Adjust for navbar */
+}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 import './BrandRegistrationForm.css';
@@ -14,6 +15,8 @@ const BrandRegistrationForm = () => {
     ownerName: '',
     contactNumber: '',
     email: '',
+    password: '',
+    confirmPassword: '',
     budget: '',
     targetAudience: '',
     targetedVideo: ''
@@ -29,10 +32,21 @@ const BrandRegistrationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
     try {
+      // Save inquiry data with email and password for future login
       const collectionName = selectedService === 'environmental' ? 'environmentalInquiries' : 'packagingInquiries';
-      await addDoc(collection(db, collectionName), { ...formData, service: selectedService });
-      navigate('/submission-success', { state: { type: 'brand' } });
+      await addDoc(collection(db, collectionName), {
+        ...formData,
+        service: selectedService,
+        approved: false,
+        createdAt: new Date()
+      });
+
+      navigate('/submission-success');
     } catch (error) {
       console.error('Error adding document: ', error);
       alert('Error submitting form. Please try again.');
@@ -123,6 +137,28 @@ const BrandRegistrationForm = () => {
             id="email"
             name="email"
             value={formData.email}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="confirmPassword">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={formData.confirmPassword}
             onChange={handleInputChange}
             required
           />
