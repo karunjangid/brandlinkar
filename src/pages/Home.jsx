@@ -183,7 +183,7 @@ const Home = () => {
           <div className="team-grid">
             <div className="team-member">
               <img src={Teammm} alt="Karun Kumar Jangid" className="member-image" />
-              <h3>Karun Kumar Jangid</h3>
+              <h3>Naitik Sharma</h3>
               <p className="member-role">CEO & Founder</p>
               <p className="member-bio">Visionary leader with expertise in digital marketing and influencer partnerships, driving innovation in the industry.</p>
             </div>
@@ -394,7 +394,7 @@ const Home = () => {
               <div className="contact-item">
                 <i className="fas fa-envelope"></i>
                 <div>
-                  <strong>Email:</strong> jangidkind@gmail.com
+                  <strong>Email:</strong> Nitinsharma9057@gmail.com
                 </div>
               </div>
               <div className="contact-item">
