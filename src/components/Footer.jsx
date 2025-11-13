@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <h3 className="footer-logo">BRANDLINKAR</h3>
-            <p>Connecting Brands & Influencers Worldwide</p>
+            <p>Transforming Businesses Through Digital Marketing Excellence</p>
           </div>
           <div className="footer-section">
             <h4>Quick Links</h4>
@@ -31,7 +31,7 @@ const Footer = () => {
           <div className="footer-section">
             <h4>Contact Info</h4>
             <p>Malviya Nagar, Jaipur, Rajasthan, India 302017</p>
-            <p>Email: Nitinsharma9057@gmail.com</p>
+            <p>Email: jangidkind@gmail.com</p>
             <p>Phone: +918619448841</p>
           </div>
         </div>

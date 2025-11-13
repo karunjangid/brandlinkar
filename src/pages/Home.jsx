@@ -13,6 +13,10 @@ import Teammm from "../assets/Team.png";
 
 const Home = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+  const [logoClickCount, setLogoClickCount] = useState(0);
+  const [showAdminPanel, setShowAdminPanel] = useState(false);
+  const [adminSection, setAdminSection] = useState('');
   const statsRef = useRef(null);
 
   useEffect(() => {
@@ -51,50 +55,129 @@ const Home = () => {
     return () => observer.disconnect();
   }, []);
 
+  const handleLogoClick = () => {
+    const newCount = logoClickCount + 1;
+    setLogoClickCount(newCount);
+    if (newCount === 7) {
+      setShowLoginModal(true);
+      setLogoClickCount(0);
+    }
+  };
+
+  const handleLogin = (username, password) => {
+    if (username === 'jangidkind' && password === 'Karun@8619') {
+      setIsAdminLoggedIn(true);
+      setShowLoginModal(false);
+      setShowAdminPanel(true);
+    } else {
+      alert('Invalid credentials');
+    }
+  };
+
+  const handleAdminAction = (section) => {
+    setAdminSection(section);
+  };
+
+  const handleAddCard = (section) => {
+    // Logic to add new card to the section
+    alert(`Add new card to ${section}`);
+  };
+
+  const handleDeleteCard = (section) => {
+    // Logic to delete previous card from the section
+    alert(`Delete previous card from ${section}`);
+  };
+
+  const handleSave = () => {
+    // Logic to save changes
+    alert('Changes saved');
+  };
+
   return (
     <>
-      <NavBar showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} />
+      <NavBar onLogoClick={handleLogoClick} />
+      {showLoginModal && (
+        <div className="login-modal">
+          <div className="login-modal-content">
+            <h2>Admin Login</h2>
+            <input type="text" placeholder="Username" id="username" />
+            <input type="password" placeholder="Password" id="password" />
+            <button onClick={() => handleLogin(document.getElementById('username').value, document.getElementById('password').value)}>Login</button>
+            <button onClick={() => setShowLoginModal(false)}>Cancel</button>
+          </div>
+        </div>
+      )}
+      {showAdminPanel && (
+        <div className="admin-panel">
+          <h2>Admin Panel</h2>
+          <button onClick={() => handleAdminAction('services')}>Our Services</button>
+          <button onClick={() => handleAdminAction('team')}>Team</button>
+          <button onClick={() => handleAdminAction('tools')}>Tools</button>
+          <button onClick={() => handleAdminAction('reviews')}>Reviews</button>
+          <button onClick={() => handleAdminAction('events')}>Upcoming Events</button>
+          {adminSection && (
+            <div className="admin-section">
+              <h3>Edit {adminSection}</h3>
+              <button onClick={() => handleAddCard(adminSection)}>Add New Card</button>
+              <button onClick={() => handleDeleteCard(adminSection)}>Delete Previous Card</button>
+              <button onClick={handleSave}>Save</button>
+            </div>
+          )}
+          <button onClick={() => { setShowAdminPanel(false); setIsAdminLoggedIn(false); }}>Logout</button>
+        </div>
+      )}
       <main id="home" className="home-hero">
         <div className="home-content">
           <h1>Welcome to BrandLinkar</h1>
-          <p>Connecting Brands & Influencers for Mutual Growth</p>
-          <button className="home-button" onClick={() => setShowLoginModal(true)}>Register Now</button>
+          <p>Transforming Businesses Through Digital Marketing Excellence</p>
         </div>
       </main>
 
-      <section id="about" className="about-section">
-        <div className="about-container">
-          <div className="about-content">
-            <div className="about-text">
-              <h2>About BrandLinkar</h2>
-              <p>
-                BrandLinkar bridges the gap between brands and influencers, creating authentic partnerships that drive results. Our platform is designed to foster collaboration, transparency, and growth for both parties.
-              </p>
-              <p>
-                We connect brands with the perfect influencers to amplify their reach and drive meaningful engagement. Join thousands of successful partnerships that have transformed businesses and careers.
-              </p>
+      <section id="services" className="services-section">
+        <div className="services-container">
+          <h2>Our Services</h2>
+          <p>Comprehensive digital marketing solutions tailored to elevate your brand.</p>
+          <div className="services-grid">
+            <div className="service-card">
+              <i className="fas fa-users"></i>
+              <h3>Influencer Marketing & Reels</h3>
+              <p>Connect with authentic influencers to create engaging reels and content that drives real results.</p>
             </div>
-            <div className="about-image">
-              <img src={AboutUs} alt="BrandLinkar Team" />
+            <div className="service-card">
+              <i className="fas fa-bullhorn"></i>
+              <h3>Performance Ads (Meta & Google)</h3>
+              <p>Optimize campaigns on Meta and Google platforms for maximum ROI and targeted reach.</p>
+            </div>
+            <div className="service-card">
+              <i className="fas fa-book-open"></i>
+              <h3>Brand Storytelling & Premium Campaigns</h3>
+              <p>Craft compelling narratives and execute high-impact campaigns that resonate with your audience.</p>
+            </div>
+            <div className="service-card">
+              <i className="fas fa-store"></i>
+              <h3>Local Business Growth</h3>
+              <p>Boost visibility and sales for restaurants, cafes, salons, events, boutiques, new startups, and malls.</p>
+            </div>
+            <div className="service-card">
+              <i className="fas fa-search"></i>
+              <h3>SEO & Content Marketing</h3>
+              <p>Optimize your online presence with strategic SEO and compelling content that drives organic traffic and engagement.</p>
+            </div>
+            <div className="service-card">
+              <i className="fas fa-chart-bar"></i>
+              <h3>Analytics & Reporting</h3>
+              <p>Track performance with detailed analytics and custom reports to measure ROI and refine your marketing strategies.</p>
             </div>
           </div>
-          <div className="stats-container" ref={statsRef}>
-            <div className="stat-item">
-              <div className="stat-number" data-target="5000">0</div>
-              <p> + Businesses Helped</p>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number" data-target="25000">0</div>
-              <p> + Influencers Onboarded</p>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number" data-target="1000000">0</div>
-              <p> $ + Earned by Influencers</p>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number" data-target="98">0</div>
-              <p>% + Trust Score</p>
-            </div>
+        </div>
+      </section>
+
+      <section id="promo-video" className="promo-video-section">
+        <div className="promo-video-container">
+          <h2>Watch Our Success Stories</h2>
+          <p>See how we've helped brands transform their digital presence with our expert marketing strategies.</p>
+          <div className="video-wrapper">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Hin8-nEFIuI?si=DU5Z9UFzg4q1pMCn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
         </div>
       </section>
@@ -183,38 +266,106 @@ const Home = () => {
           <div className="team-grid">
             <div className="team-member">
               <img src={Teammm} alt="Karun Kumar Jangid" className="member-image" />
-              <h3>Naitik Sharma</h3>
+              <h3>Karun Kumar Jangid</h3>
               <p className="member-role">CEO & Founder</p>
               <p className="member-bio">Visionary leader with expertise in digital marketing and influencer partnerships, driving innovation in the industry.</p>
+            </div>
+            <div className="team-member">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Rajesh Kumar" className="member-image" />
+              <h3>Rajesh Kumar</h3>
+              <p className="member-role">Digital Marketing Strategist</p>
+              <p className="member-bio">Data-driven strategist specializing in performance marketing and campaign optimization across multiple platforms.</p>
+            </div>
+            <div className="team-member">
+              <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Priya Singh" className="member-image" />
+              <h3>Priya Singh</h3>
+              <p className="member-role">Creative Designer</p>
+              <p className="member-bio">Award-winning designer creating visually stunning brand identities and marketing materials that captivate audiences.</p>
+            </div>
+            <div className="team-member">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Amit Patel" className="member-image" />
+              <h3>Amit Patel</h3>
+              <p className="member-role">Video Editor</p>
+              <p className="member-bio">Expert video editor producing high-engagement reels and multimedia content for social platforms.</p>
+            </div>
+            <div className="team-member">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Sneha Gupta" className="member-image" />
+              <h3>Sneha Gupta</h3>
+              <p className="member-role">Videographer</p>
+              <p className="member-bio">Professional videographer capturing compelling visuals and stories that bring brands to life.</p>
+            </div>
+            <div className="team-member">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Vikram Rao" className="member-image" />
+              <h3>Vikram Rao</h3>
+              <p className="member-role">Content Creator</p>
+              <p className="member-bio">Creative content creator developing engaging narratives and multimedia content for brand campaigns.</p>
+            </div>
+            <div className="team-member">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Anjali Mehta" className="member-image" />
+              <h3>Anjali Mehta</h3>
+              <p className="member-role">Business Development Associate</p>
+              <p className="member-bio">Strategic business development professional building partnerships and driving growth opportunities.</p>
+            </div>
+            <div className="team-member">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Karan Jain" className="member-image" />
+              <h3>Karan Jain</h3>
+              <p className="member-role">Customer Support Head</p>
+              <p className="member-bio">Dedicated customer support leader ensuring exceptional client experiences and satisfaction.</p>
+            </div>
+            <div className="team-member">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Meera Shah" className="member-image" />
+              <h3>Meera Shah</h3>
+              <p className="member-role">HR Manager</p>
+              <p className="member-bio">Experienced HR professional fostering a positive work culture and talent development.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="how-it-works" className="how-it-works-section">
-        <div className="how-it-works-container">
-          <h2>How It Works</h2>
-          <p>Simple steps to connect brands and influencers for successful partnerships.</p>
-          <div className="steps-grid">
-            <div className="step-card">
-              <div className="step-number">1</div>
-              <h3>Register & Create Profile</h3>
-              <p>Sign up as a brand or influencer and create your detailed profile showcasing your expertise and requirements.</p>
+      <section id="tools" className="tools-section">
+        <div className="tools-container">
+          <h2>Our Tools & Technologies</h2>
+          <p>We leverage cutting-edge tools to deliver exceptional results.</p>
+          <div className="tools-grid">
+            <div className="tool-card">
+              <i className="fas fa-palette"></i>
+              <h3>Canva Pro</h3>
+              <p>Advanced design tools for creating stunning visuals and graphics.</p>
             </div>
-            <div className="step-card">
-              <div className="step-number">2</div>
-              <h3>Find Perfect Matches</h3>
-              <p>Use our advanced matching algorithm to discover compatible partners based on niche, audience, and goals.</p>
+            <div className="tool-card">
+              <i className="fas fa-photo-video"></i>
+              <h3>Adobe Suite</h3>
+              <p>Professional editing and design software for premium content creation.</p>
             </div>
-            <div className="step-card">
-              <div className="step-number">3</div>
-              <h3>Collaborate & Create</h3>
-              <p>Connect directly with your matches, discuss campaign details, and create authentic content together.</p>
+            <div className="tool-card">
+              <i className="fab fa-facebook-f"></i>
+              <h3>Meta Ads Manager</h3>
+              <p>Powerful platform for running targeted ad campaigns on Facebook and Instagram.</p>
             </div>
-            <div className="step-card">
-              <div className="step-number">4</div>
-              <h3>Track Success & Grow</h3>
-              <p>Monitor campaign performance, measure ROI, and build long-term relationships for continued growth.</p>
+            <div className="tool-card">
+              <i className="fab fa-google"></i>
+              <h3>Google Ads</h3>
+              <p>Comprehensive advertising solutions for search, display, and video campaigns.</p>
+            </div>
+            <div className="tool-card">
+              <i className="fas fa-brain"></i>
+              <h3>Notion</h3>
+              <p>All-in-one workspace for project management and team collaboration.</p>
+            </div>
+            <div className="tool-card">
+              <i className="fas fa-users-cog"></i>
+              <h3>CRM</h3>
+              <p>Customer relationship management system for streamlined client interactions.</p>
+            </div>
+            <div className="tool-card">
+              <i className="fas fa-share-square"></i>
+              <h3>Hootsuite</h3>
+              <p>Social media management platform for scheduling posts and analyzing performance.</p>
+            </div>
+            <div className="tool-card">
+              <i className="fab fa-mailchimp"></i>
+              <h3>Mailchimp</h3>
+              <p>Email marketing automation and campaign management for targeted outreach.</p>
             </div>
           </div>
         </div>
@@ -273,6 +424,30 @@ const Home = () => {
                 </div>
               </div>
             </div>
+            <div className="testimonial-card">
+              <div className="testimonial-content">
+                <p>"Working with BrandLinkar has been a game-changer for our startup. Their influencer connections helped us reach our target audience effectively and affordably."</p>
+              </div>
+              <div className="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Arjun Sharma" />
+                <div>
+                  <h4>Arjun Sharma</h4>
+                  <p>Startup Founder, TechStart</p>
+                </div>
+              </div>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-content">
+                <p>"The analytics and reporting from BrandLinkar gave us clear insights into our campaign performance. We've seen a 250% ROI increase since partnering with them."</p>
+              </div>
+              <div className="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Priya Verma" />
+                <div>
+                  <h4>Priya Verma</h4>
+                  <p>Marketing Manager, EcoFashion</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -323,23 +498,33 @@ const Home = () => {
           <div className="events-grid">
             <div className="event-card">
               <h3>Influencer Marketing Summit</h3>
-              <div className="event-date">March 15, 2024</div>
+              <div className="event-date">March 15, 2026</div>
               <p>A comprehensive summit featuring industry leaders, networking opportunities, and the latest trends in influencer marketing.</p>
             </div>
             <div className="event-card">
               <h3>Brand-Influencer Mixer</h3>
-              <div className="event-date">April 22, 2024</div>
+              <div className="event-date">April 22, 2026</div>
               <p>An exclusive networking event where brands and influencers can connect, collaborate, and build lasting partnerships.</p>
             </div>
             <div className="event-card">
               <h3>Content Creation Workshop</h3>
-              <div className="event-date">May 10, 2024</div>
+              <div className="event-date">May 10, 2027</div>
               <p>Learn from top content creators about crafting authentic, engaging content that drives results for brands and audiences.</p>
             </div>
             <div className="event-card">
               <h3>Digital Marketing Webinar</h3>
-              <div className="event-date">June 5, 2024</div>
+              <div className="event-date">June 5, 2027</div>
               <p>Explore the future of digital marketing with expert insights on emerging platforms, AI tools, and measurement strategies.</p>
+            </div>
+            <div className="event-card">
+              <h3>Influencer Collaboration Conference</h3>
+              <div className="event-date">July 12, 2026</div>
+              <p>Join leading influencers and brands for an intensive conference on building successful long-term partnerships and maximizing campaign impact.</p>
+            </div>
+            <div className="event-card">
+              <h3>Digital Strategy Masterclass</h3>
+              <div className="event-date">August 20, 2027</div>
+              <p>A hands-on masterclass covering advanced digital marketing strategies, data analytics, and emerging technologies for business growth.</p>
             </div>
           </div>
         </div>
@@ -394,7 +579,7 @@ const Home = () => {
               <div className="contact-item">
                 <i className="fas fa-envelope"></i>
                 <div>
-                  <strong>Email:</strong> Nitinsharma9057@gmail.com
+                  <strong>Email:</strong> jangidkind@amazon.com
                 </div>
               </div>
               <div className="contact-item">

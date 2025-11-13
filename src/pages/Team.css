@@ -25,9 +25,17 @@
 }
 
 .team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  overflow-x: auto;
   gap: 2rem;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.team-grid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
 }
 
 .team-member {
@@ -80,11 +88,8 @@
     font-size: 1rem;
   }
 
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-
   .team-member {
     padding: 1.5rem;
+    min-width: 280px;
   }
 }

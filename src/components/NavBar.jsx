@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import LoginModal from './LoginModal';
 import './NavBar.css';
 
-const NavBar = ({ showLoginModal, setShowLoginModal }) => {
+const NavBar = ({ onLogoClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -15,9 +14,9 @@ const NavBar = ({ showLoginModal, setShowLoginModal }) => {
     setIsOpen(false);
   };
 
-  const handleLoginClick = () => {
-    setIsOpen(false);
-    setShowLoginModal(true);
+  const handleLogoClick = () => {
+    if (onLogoClick) onLogoClick();
+    handleLinkClick();
   };
 
   const isHomePage = location.pathname === '/';
@@ -26,7 +25,7 @@ const NavBar = ({ showLoginModal, setShowLoginModal }) => {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo" onClick={handleLinkClick}>
+          <Link to="/" className="navbar-logo" onClick={handleLogoClick}>
             BRANDLINKAR
           </Link>
           <div className={`navbar-menu ${isOpen ? 'active' : ''}`}>
@@ -49,7 +48,6 @@ const NavBar = ({ showLoginModal, setShowLoginModal }) => {
                 <Link to="/#trust" className="navbar-link" onClick={handleLinkClick}>Why Choose Us</Link>
               </>
             )}
-            <button className="navbar-button" onClick={handleLoginClick}>Login/Signup</button>
           </div>
           <div className={`navbar-toggle ${isOpen ? 'active' : ''}`} onClick={toggleMenu}>
             <span className="bar"></span>
@@ -58,7 +56,6 @@ const NavBar = ({ showLoginModal, setShowLoginModal }) => {
           </div>
         </div>
       </nav>
-      <LoginModal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)} />
     </>
   );
 };
