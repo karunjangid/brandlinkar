@@ -36,7 +36,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>karun kumar jangid non&copy; 2024 BrandLinkar. All rights reserved.</p>
+          <p>karun kumar jangid non&copy; 2024 Markizza. All rights reserved.</p>
         </div>
       </div>
     </footer>

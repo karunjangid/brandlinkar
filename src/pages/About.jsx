@@ -9,9 +9,9 @@ const About = () => {
       <NavBar />
       <section className="about-section">
         <div className="about-container">
-          <h2>About BrandLinkar Digital Agency</h2>
+          <h2>About Markizza Digital Agency</h2>
           <p>
-            BrandLinkar Digital Agency is a full-service digital marketing powerhouse specializing in influencer marketing, performance advertising, and brand storytelling. We transform businesses through innovative digital strategies that drive measurable results and sustainable growth.
+            Markizza Digital Agency is a full-service digital marketing powerhouse specializing in influencer marketing, performance advertising, and brand storytelling. We transform businesses through innovative digital strategies that drive measurable results and sustainable growth.
           </p>
           <p>
             Our mission is to bridge the gap between brands and their audiences through authentic, data-driven marketing solutions. We specialize in influencer partnerships, high-performance ad campaigns, and compelling brand narratives that resonate in today's digital landscape.

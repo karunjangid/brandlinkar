@@ -127,8 +127,34 @@ const Home = () => {
         </div>
       )}
       <main id="home" className="home-hero">
+        <div className="hero-background">
+          <div className="bg-element airplane">
+            <i className="fas fa-plane"></i>
+          </div>
+          <div className="bg-element chart">
+            <i className="fas fa-chart-bar"></i>
+          </div>
+          <div className="bg-element megaphone">
+            <i className="fas fa-bullhorn"></i>
+          </div>
+          <div className="bg-element users">
+            <i className="fas fa-users"></i>
+          </div>
+          <div className="bg-element rocket">
+            <i className="fas fa-rocket"></i>
+          </div>
+          <div className="bg-element lightbulb">
+            <i className="fas fa-lightbulb"></i>
+          </div>
+          <div className="bg-element graph">
+            <i className="fas fa-chart-line"></i>
+          </div>
+          <div className="bg-element target">
+            <i className="fas fa-bullseye"></i>
+          </div>
+        </div>
         <div className="home-content">
-          <h1>Welcome to BrandLinkar</h1>
+          <h1>Welcome to Markizza</h1>
           <p>Transforming Businesses Through Digital Marketing Excellence</p>
         </div>
       </main>
@@ -378,7 +404,7 @@ const Home = () => {
           <div className="testimonials-grid">
             <div className="testimonial-card">
               <div className="testimonial-content">
-                <p>"BrandLinkar helped us connect with the perfect influencers for our campaign. The results exceeded our expectations with a 300% increase in engagement."</p>
+                <p>"Markizza helped us connect with the perfect influencers for our campaign. The results exceeded our expectations with a 300% increase in engagement."</p>
               </div>
               <div className="testimonial-author">
                 <img src="https://sayjglobalpartners.com/wp-content/uploads/2022/12/Depositphotos_24349949_l-2015.jpg" alt="Sarah Johnson" />
@@ -390,7 +416,7 @@ const Home = () => {
             </div>
             <div className="testimonial-card">
               <div className="testimonial-content">
-                <p>"As an influencer, BrandLinkar opened doors to amazing brand partnerships. The platform is intuitive and the matches are spot-on."</p>
+                <p>"As an influencer, Markizza opened doors to amazing brand partnerships. The platform is intuitive and the matches are spot-on."</p>
               </div>
               <div className="testimonial-author">
                 <img src="https://img.freepik.com/free-photo/group-business-people_53419-5550.jpg" alt="Michael Chen" />
@@ -402,7 +428,7 @@ const Home = () => {
             </div>
             <div className="testimonial-card">
               <div className="testimonial-content">
-                <p>"The quality of partnerships on BrandLinkar is unmatched. We've seen significant growth in our brand awareness and sales."</p>
+                <p>"The quality of partnerships on Markizza is unmatched. We've seen significant growth in our brand awareness and sales."</p>
               </div>
               <div className="testimonial-author">
                 <img src="https://ocdn.eu/pulscms-transforms/1/zsrk9kuTURBXy9jMDFkNWFlOS05NTRhLTRhNmUtYTZiOC0xNTk4NTRlMjJkMTIuanBlZ5GVAs0EsADDw94AAaEwAQ" alt="Emma Rodriguez" />
@@ -414,7 +440,7 @@ const Home = () => {
             </div>
             <div className="testimonial-card">
               <div className="testimonial-content">
-                <p>"BrandLinkar made it easy to find brands that align with my values. The collaborations have been authentic and profitable."</p>
+                <p>"Markizza made it easy to find brands that align with my values. The collaborations have been authentic and profitable."</p>
               </div>
               <div className="testimonial-author">
                 <img src="https://www.pngkey.com/png/detail/982-9820724_corporate-solutions.png" alt="David Park" />
@@ -426,7 +452,7 @@ const Home = () => {
             </div>
             <div className="testimonial-card">
               <div className="testimonial-content">
-                <p>"Working with BrandLinkar has been a game-changer for our startup. Their influencer connections helped us reach our target audience effectively and affordably."</p>
+                <p>"Working with Markizza has been a game-changer for our startup. Their influencer connections helped us reach our target audience effectively and affordably."</p>
               </div>
               <div className="testimonial-author">
                 <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Arjun Sharma" />
@@ -438,7 +464,7 @@ const Home = () => {
             </div>
             <div className="testimonial-card">
               <div className="testimonial-content">
-                <p>"The analytics and reporting from BrandLinkar gave us clear insights into our campaign performance. We've seen a 250% ROI increase since partnering with them."</p>
+                <p>"The analytics and reporting from Markizza gave us clear insights into our campaign performance. We've seen a 250% ROI increase since partnering with them."</p>
               </div>
               <div className="testimonial-author">
                 <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Priya Verma" />
@@ -532,7 +558,7 @@ const Home = () => {
 
       <section id="trust" className="trust-section">
         <div className="trust-container">
-          <h2>Why Choose BrandLinkar</h2>
+          <h2>Why Choose Markizza</h2>
           <p>Experience the difference with our commitment to excellence, security, and authentic partnerships.</p>
           <div className="trust-grid">
             <div className="trust-item">
@@ -572,7 +598,7 @@ const Home = () => {
       <section id="contact" className="contact-section">
         <div className="contact-container">
           <h2>Contact Us</h2>
-          <p>Get in touch with our team to learn more about how BrandLinkar can help your business grow.</p>
+          <p>Get in touch with our team to learn more about how Markizza can help your business grow.</p>
           <div className="contact-content">
             <div className="contact-info">
               <h3>Get In Touch</h3>

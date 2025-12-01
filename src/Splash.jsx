@@ -4,7 +4,7 @@ const Splash = ({ onComplete }) => {
   const [filledLetters, setFilledLetters] = useState([]);
   const [logoVisible, setLogoVisible] = useState(false);
   const [logoOut, setLogoOut] = useState(false);
-  const text = 'BRANDLINKAR';
+  const text = 'MARKIZZA';
 
   useEffect(() => {
     // Logo in animation
@@ -39,8 +39,9 @@ const Splash = ({ onComplete }) => {
       left: 0,
       width: '100vw',
       height: '100vh',
-      background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+      background: '#343b7a',
       display: 'flex',
+      flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
       zIndex: 1000,
@@ -55,8 +56,8 @@ const Splash = ({ onComplete }) => {
           cursor: 'pointer',
           fontSize: isMobile ? '3rem' : '6rem',
           textAlign: 'center',
-          color: '#2c3e50',
-          textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+          color: '#313de8ff',
+          textShadow: '0 2px 4px rgba(0,0,0,0.3)',
         }}
         onClick={() => onComplete()}
         title="Click to skip"
@@ -66,24 +67,24 @@ const Splash = ({ onComplete }) => {
             key={i}
             style={{
               display: 'inline-block',
-              color: filledLetters.includes(i) ? '#3498db' : '#2c3e50',
+              color: filledLetters.includes(i) ? '#ffeb99' : '#ffb452',
               transition: 'all 0.6s ease',
               position: 'relative',
               cursor: 'pointer',
               transform: filledLetters.includes(i) ? 'scale(1.02)' : 'scale(1)',
-              textShadow: filledLetters.includes(i) ? '0 0 20px rgba(52, 152, 219, 0.5)' : '0 2px 4px rgba(0,0,0,0.1)',
+              textShadow: filledLetters.includes(i) ? '0 0 20px rgba(255, 235, 153, 0.5)' : '0 2px 4px rgba(0,0,0,0.1)',
             }}
             onMouseEnter={(e) => {
               if (filledLetters.includes(i)) {
-                e.target.style.color = '#2980b9';
-                e.target.style.textShadow = '0 0 30px rgba(52, 152, 219, 0.7)';
+                e.target.style.color = '#ffe066';
+                e.target.style.textShadow = '0 0 30px rgba(255, 235, 153, 0.7)';
                 e.target.style.transform = 'scale(1.05)';
               }
             }}
             onMouseLeave={(e) => {
               if (filledLetters.includes(i)) {
-                e.target.style.color = '#3498db';
-                e.target.style.textShadow = '0 0 20px rgba(52, 152, 219, 0.5)';
+                e.target.style.color = '#ffeb99';
+                e.target.style.textShadow = '0 0 20px rgba(255, 235, 153, 0.5)';
                 e.target.style.transform = 'scale(1.02)';
               }
             }}
@@ -94,12 +95,12 @@ const Splash = ({ onComplete }) => {
         <div style={{
           marginTop: '1rem',
           fontSize: isMobile ? '1rem' : '1.5rem',
-          color: '#7f8c8d',
+          color: '#ffb452',
           fontWeight: 300,
           opacity: logoVisible ? 1 : 0,
           transition: 'opacity 1s ease 0.5s',
         }}>
-          Connecting Brands & Influencers
+          Digital Marketing Agency that Elevates Your Brand
         </div>
       </div>
     </div>

@@ -1,0 +1,5 @@
+- [ ] Add notebook container div in Home.jsx
+- [ ] Implement scroll event listener for unrolling animation
+- [ ] Update Home.css for rolled and unrolled states
+- [ ] Add rope pulling visual element
+- [ ] Test animation on different devices

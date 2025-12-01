@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../assets/logo.png';
 import './NavBar.css';
 
 const NavBar = ({ onLogoClick }) => {
@@ -26,7 +27,7 @@ const NavBar = ({ onLogoClick }) => {
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={handleLogoClick}>
-            BRANDLINKAR
+          <img src={logo} alt="" className='logo1'/>ARKIZZA
           </Link>
           <div className={`navbar-menu ${isOpen ? 'active' : ''}`}>
             {isHomePage ? (

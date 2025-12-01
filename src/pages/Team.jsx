@@ -67,7 +67,7 @@ const Team = () => {
       <section className="team-section">
         <div className="team-container">
           <h2>Our Team</h2>
-          <p>Meet the passionate professionals behind BrandLinkar Digital Agency.</p>
+          <p>Meet the passionate professionals behind Markizza Digital Agency.</p>
           <div className="team-grid">
             {teamMembers.map((member, index) => (
               <div key={index} className="team-member">
