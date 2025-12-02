@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import './Home.css';
-import AboutUs from "../assets/aboutus.png";
 import beautyglow from "../assets/beautyglow.png";
 import fashionhub from "../assets/fashionhub.png";
 import techcorp from "../assets/techcorp.png";
@@ -10,6 +10,145 @@ import travekworld from "../assets/travekworld.png";
 import foodiedelight from "../assets/foodiedelight.png";
 import healthplus from "../assets/healthplus.png";
 import Teammm from "../assets/Team.png";
+import Team2 from "../assets/team2.jpg";
+
+function ContactForm() {
+  const [state, handleSubmit] = useForm("xqarbbod");
+  if (state.succeeded) {
+    return <p>Thanks for your message! We'll get back to you soon.</p>;
+  }
+  return (
+    <form onSubmit={handleSubmit} className="contact-form">
+      <div className="form-group">
+        <label htmlFor="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          placeholder="Enter your name"
+          required
+        />
+        <ValidationError
+          prefix="Name"
+          field="name"
+          errors={state.errors}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+        <ValidationError
+          prefix="Email"
+          field="email"
+          errors={state.errors}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="subject">Subject</label>
+        <input
+          id="subject"
+          type="text"
+          name="subject"
+          placeholder="Enter subject"
+          required
+        />
+        <ValidationError
+          prefix="Subject"
+          field="subject"
+          errors={state.errors}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          placeholder="Enter your message"
+          required
+        />
+        <ValidationError
+          prefix="Message"
+          field="message"
+          errors={state.errors}
+        />
+      </div>
+      <button type="submit" className="submit-btn" disabled={state.submitting}>
+        Send Message
+      </button>
+      {state.errors && state.errors.length > 0 && (
+        <p style={{ color: 'red' }}>There was an error submitting the form. Please try again.</p>
+      )}
+    </form>
+  );
+}
+
+function ScheduleForm() {
+  const [state, handleSubmit] = useForm("xqarbbod"); // Replace with new Formspree form ID for scheduling
+  if (state.succeeded) {
+    return <p>Meeting scheduled successfully! We'll send a confirmation to your email.</p>;
+  }
+  return (
+    <form onSubmit={handleSubmit} className="schedule-form">
+      <div className="form-group">
+        <label htmlFor="date">Select Date</label>
+        <input
+          id="date"
+          type="date"
+          name="date"
+          required
+        />
+        <ValidationError
+          prefix="Date"
+          field="date"
+          errors={state.errors}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="phone">Phone Number</label>
+        <input
+          id="phone"
+          type="tel"
+          name="phone"
+          placeholder="Enter your phone number"
+          required
+        />
+        <ValidationError
+          prefix="Phone"
+          field="phone"
+          errors={state.errors}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="schedule-message">Message</label>
+        <textarea
+          id="schedule-message"
+          name="message"
+          rows="3"
+          placeholder="Enter your message"
+          required
+        />
+        <ValidationError
+          prefix="Message"
+          field="message"
+          errors={state.errors}
+        />
+      </div>
+      <button type="submit" className="submit-btn" disabled={state.submitting}>
+        Schedule Meeting
+      </button>
+      {state.errors && state.errors.length > 0 && (
+        <p style={{ color: 'red' }}>There was an error scheduling the meeting. Please try again.</p>
+      )}
+    </form>
+  );
+}
 
 const Home = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -17,6 +156,8 @@ const Home = () => {
   const [logoClickCount, setLogoClickCount] = useState(0);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
   const [adminSection, setAdminSection] = useState('');
+  const [showMeetingOptions, setShowMeetingOptions] = useState(false);
+  const [showScheduleForm, setShowScheduleForm] = useState(false);
   const statsRef = useRef(null);
 
   useEffect(() => {
@@ -156,6 +297,26 @@ const Home = () => {
         <div className="home-content">
           <h1>Welcome to Markizza</h1>
           <p>Transforming Businesses Through Digital Marketing Excellence</p>
+          {!showMeetingOptions && <button className="schedule-btn" onClick={() => setShowMeetingOptions(true)}>Schedule Meeting</button>}
+          {showMeetingOptions && (
+            <div className="meeting-options">
+              <a href="tel:8619448841" className="option-btn call-btn">
+                <i className="fas fa-phone"></i> Call Now
+              </a>
+              <button className="option-btn schedule-btn" onClick={() => { setShowScheduleForm(true); setShowMeetingOptions(false); }}>
+                <i className="fas fa-calendar-alt"></i> Schedule Meeting
+              </button>
+            </div>
+          )}
+          {showScheduleForm && (
+            <div className="schedule-modal">
+              <div className="schedule-modal-content">
+                <h3>Schedule a Meeting</h3>
+                <ScheduleForm />
+                <button onClick={() => setShowScheduleForm(false)}>Close</button>
+              </div>
+            </div>
+          )}
         </div>
       </main>
 
@@ -297,49 +458,13 @@ const Home = () => {
               <p className="member-bio">Visionary leader with expertise in digital marketing and influencer partnerships, driving innovation in the industry.</p>
             </div>
             <div className="team-member">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Rajesh Kumar" className="member-image" />
-              <h3>Rajesh Kumar</h3>
-              <p className="member-role">Digital Marketing Strategist</p>
-              <p className="member-bio">Data-driven strategist specializing in performance marketing and campaign optimization across multiple platforms.</p>
+              <img src={Team2} className="member-image" />
+              <h3>Nitin Kumar Sharma</h3>
+              <p className="member-role">Co - Founder & Digital marketing expert</p>
+              <p className="member-bio">Visionary leader with expertise in digital marketing and influencer partnerships, driving innovation in the industry.</p>
             </div>
             <div className="team-member">
-              <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Priya Singh" className="member-image" />
-              <h3>Priya Singh</h3>
-              <p className="member-role">Creative Designer</p>
-              <p className="member-bio">Award-winning designer creating visually stunning brand identities and marketing materials that captivate audiences.</p>
-            </div>
-            <div className="team-member">
-              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Amit Patel" className="member-image" />
-              <h3>Amit Patel</h3>
-              <p className="member-role">Video Editor</p>
-              <p className="member-bio">Expert video editor producing high-engagement reels and multimedia content for social platforms.</p>
-            </div>
-            <div className="team-member">
-              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Sneha Gupta" className="member-image" />
-              <h3>Sneha Gupta</h3>
-              <p className="member-role">Videographer</p>
-              <p className="member-bio">Professional videographer capturing compelling visuals and stories that bring brands to life.</p>
-            </div>
-            <div className="team-member">
-              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Vikram Rao" className="member-image" />
-              <h3>Vikram Rao</h3>
-              <p className="member-role">Content Creator</p>
-              <p className="member-bio">Creative content creator developing engaging narratives and multimedia content for brand campaigns.</p>
-            </div>
-            <div className="team-member">
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Anjali Mehta" className="member-image" />
-              <h3>Anjali Mehta</h3>
-              <p className="member-role">Business Development Associate</p>
-              <p className="member-bio">Strategic business development professional building partnerships and driving growth opportunities.</p>
-            </div>
-            <div className="team-member">
-              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Karan Jain" className="member-image" />
-              <h3>Karan Jain</h3>
-              <p className="member-role">Customer Support Head</p>
-              <p className="member-bio">Dedicated customer support leader ensuring exceptional client experiences and satisfaction.</p>
-            </div>
-            <div className="team-member">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Meera Shah" className="member-image" />
+              <img src="https://media.istockphoto.com/id/1359499268/photo/young-woman-working-at-home-stock-photo.jpg?b=1&s=170667a&w=0&k=20&c=a7eR4vmPkFqidzvCwp6wfjowEb9e5s8fl8F38ACtWzQ=" alt="Meera Shah" className="member-image" />
               <h3>Meera Shah</h3>
               <p className="member-role">HR Manager</p>
               <p className="member-bio">Experienced HR professional fostering a positive work culture and talent development.</p>
@@ -397,164 +522,6 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="testimonials" className="testimonials-section">
-        <div className="testimonials-container">
-          <h2>What Our Users Say</h2>
-          <p>Hear from brands and influencers who have transformed their success through our platform.</p>
-          <div className="testimonials-grid">
-            <div className="testimonial-card">
-              <div className="testimonial-content">
-                <p>"Markizza helped us connect with the perfect influencers for our campaign. The results exceeded our expectations with a 300% increase in engagement."</p>
-              </div>
-              <div className="testimonial-author">
-                <img src="https://sayjglobalpartners.com/wp-content/uploads/2022/12/Depositphotos_24349949_l-2015.jpg" alt="Sarah Johnson" />
-                <div>
-                  <h4>Sarah Johnson</h4>
-                  <p>Marketing Director, FashionHub</p>
-                </div>
-              </div>
-            </div>
-            <div className="testimonial-card">
-              <div className="testimonial-content">
-                <p>"As an influencer, Markizza opened doors to amazing brand partnerships. The platform is intuitive and the matches are spot-on."</p>
-              </div>
-              <div className="testimonial-author">
-                <img src="https://img.freepik.com/free-photo/group-business-people_53419-5550.jpg" alt="Michael Chen" />
-                <div>
-                  <h4>Michael Chen</h4>
-                  <p>Lifestyle Influencer</p>
-                </div>
-              </div>
-            </div>
-            <div className="testimonial-card">
-              <div className="testimonial-content">
-                <p>"The quality of partnerships on Markizza is unmatched. We've seen significant growth in our brand awareness and sales."</p>
-              </div>
-              <div className="testimonial-author">
-                <img src="https://ocdn.eu/pulscms-transforms/1/zsrk9kuTURBXy9jMDFkNWFlOS05NTRhLTRhNmUtYTZiOC0xNTk4NTRlMjJkMTIuanBlZ5GVAs0EsADDw94AAaEwAQ" alt="Emma Rodriguez" />
-                <div>
-                  <h4>Emma Rodriguez</h4>
-                  <p>CEO, BeautyGlow</p>
-                </div>
-              </div>
-            </div>
-            <div className="testimonial-card">
-              <div className="testimonial-content">
-                <p>"Markizza made it easy to find brands that align with my values. The collaborations have been authentic and profitable."</p>
-              </div>
-              <div className="testimonial-author">
-                <img src="https://www.pngkey.com/png/detail/982-9820724_corporate-solutions.png" alt="David Park" />
-                <div>
-                  <h4>David Park</h4>
-                  <p>Fitness Influencer</p>
-                </div>
-              </div>
-            </div>
-            <div className="testimonial-card">
-              <div className="testimonial-content">
-                <p>"Working with Markizza has been a game-changer for our startup. Their influencer connections helped us reach our target audience effectively and affordably."</p>
-              </div>
-              <div className="testimonial-author">
-                <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Arjun Sharma" />
-                <div>
-                  <h4>Arjun Sharma</h4>
-                  <p>Startup Founder, TechStart</p>
-                </div>
-              </div>
-            </div>
-            <div className="testimonial-card">
-              <div className="testimonial-content">
-                <p>"The analytics and reporting from Markizza gave us clear insights into our campaign performance. We've seen a 250% ROI increase since partnering with them."</p>
-              </div>
-              <div className="testimonial-author">
-                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Priya Verma" />
-                <div>
-                  <h4>Priya Verma</h4>
-                  <p>Marketing Manager, EcoFashion</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="success-stories" className="success-stories-section">
-        <div className="success-stories-container">
-          <h2>Success Stories</h2>
-          <p>Real results from partnerships that transformed businesses and careers.</p>
-          <div className="stories-grid">
-            <div className="story-card">
-              <div className="story-content">
-                <h3>FashionHub Campaign Success</h3>
-                <p>Partnered with top fashion influencers to launch a sustainable clothing line, resulting in massive brand awareness and customer engagement.</p>
-                <div className="story-stats">
-                  <span>300% Traffic Increase</span>
-                  <span>50K New Followers</span>
-                </div>
-              </div>
-            </div>
-            <div className="story-card">
-              <div className="story-content">
-                <h3>TechCorp App Launch</h3>
-                <p>Collaborated with tech influencers to promote a new productivity app, driving downloads and establishing market presence.</p>
-                <div className="story-stats">
-                  <span>10K App Downloads</span>
-                  <span>$50K Revenue Generated</span>
-                </div>
-              </div>
-            </div>
-            <div className="story-card">
-              <div className="story-content">
-                <h3>FoodieDelight Viral Campaign</h3>
-                <p>Worked with food bloggers to create authentic content that went viral, boosting orders and establishing brand authority.</p>
-                <div className="story-stats">
-                  <span>200% Order Increase</span>
-                  <span>Viral Social Media Reach</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="event-highlights" className="event-highlights-section">
-        <div className="event-highlights-container">
-          <h2>Upcoming Events</h2>
-          <p>Join us for exciting events designed to connect, educate, and inspire the influencer marketing community.</p>
-          <div className="events-grid">
-            <div className="event-card">
-              <h3>Influencer Marketing Summit</h3>
-              <div className="event-date">March 15, 2026</div>
-              <p>A comprehensive summit featuring industry leaders, networking opportunities, and the latest trends in influencer marketing.</p>
-            </div>
-            <div className="event-card">
-              <h3>Brand-Influencer Mixer</h3>
-              <div className="event-date">April 22, 2026</div>
-              <p>An exclusive networking event where brands and influencers can connect, collaborate, and build lasting partnerships.</p>
-            </div>
-            <div className="event-card">
-              <h3>Content Creation Workshop</h3>
-              <div className="event-date">May 10, 2027</div>
-              <p>Learn from top content creators about crafting authentic, engaging content that drives results for brands and audiences.</p>
-            </div>
-            <div className="event-card">
-              <h3>Digital Marketing Webinar</h3>
-              <div className="event-date">June 5, 2027</div>
-              <p>Explore the future of digital marketing with expert insights on emerging platforms, AI tools, and measurement strategies.</p>
-            </div>
-            <div className="event-card">
-              <h3>Influencer Collaboration Conference</h3>
-              <div className="event-date">July 12, 2026</div>
-              <p>Join leading influencers and brands for an intensive conference on building successful long-term partnerships and maximizing campaign impact.</p>
-            </div>
-            <div className="event-card">
-              <h3>Digital Strategy Masterclass</h3>
-              <div className="event-date">August 20, 2027</div>
-              <p>A hands-on masterclass covering advanced digital marketing strategies, data analytics, and emerging technologies for business growth.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section id="trust" className="trust-section">
         <div className="trust-container">
@@ -621,25 +588,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <form className="contact-form">
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required />
-              </div>
-              <div className="form-group">
-                <label htmlFor="subject">Subject</label>
-                <input type="text" id="subject" name="subject" placeholder="Enter subject" required />
-              </div>
-              <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
-              </div>
-              <button type="submit" className="submit-btn">Send Message</button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </section>

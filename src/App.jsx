@@ -6,7 +6,7 @@ import About from './pages/About'
 import HowItWorks from './pages/HowItWorks'
 import Team from './pages/Team'
 import Partners from './pages/Partners'
-import Contact from './pages/Contact'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 import './App.css'
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/team" element={<Team />} />
           <Route path="/partners" element={<Partners />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
       </Router>
   )
